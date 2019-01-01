@@ -1,0 +1,36 @@
+Arco linha;
+Ball [] ball;
+final int BULLETS = 2000;
+
+void setup() {
+
+  size(1024, 540);
+  linha = new Arco(width/2, 399);
+  ball = new Ball[BULLETS];
+
+  for (int i = 0; i < BULLETS; i++) {
+    ball[i] = new Ball(linha.x1, linha.y1, 10);
+  }
+}
+
+void draw() {
+
+  background(50);     
+
+  linha.design();
+  for (int i = 0; i < BULLETS; i++) {
+    if (ball[i].instanced) {
+      ball[i].moveBall();
+      ball[i].design();
+    }
+  }
+}
+
+void mousePressed() {
+  for (int i = 0; i < BULLETS; i++) {
+    if (!ball[i].instanced){
+      ball[i].intanceBall(linha);
+      break;
+    }
+  }
+}
