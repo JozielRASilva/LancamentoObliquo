@@ -1,0 +1,51 @@
+class Arco{
+  
+  float x1;
+  float x2;
+  
+  float y1;
+  float y2;
+  
+  float a;
+  float h;
+  float d;
+  float c;
+  
+  float sen;
+  float cos;
+  
+  Arco(float x, float y){
+    x1 = x;
+    y1 = y;
+  }
+  
+  void design(){
+    
+    x2 = mouseX;
+    y2 = mouseY;
+    
+    line(x1,y1,x2,y2);
+    
+    // Hipotenusa
+    
+    d = dist(x1,y1,x2,y2);
+    
+    // Altura
+    
+    h = y2 - y1;
+    
+    // Comprimento
+    
+    c = x2 - x1;
+    
+    // Seno
+    
+    sen = h / d;
+    
+    // Cosseno
+    
+    cos = c / d;
+    
+    text("Distância: " + d + "\nAltura: " + h + "\nComprimento: " + c + "\nSeno: " + sen + "\nCosseno: " + cos, width/2 - 100, 450);
+  }
+}
