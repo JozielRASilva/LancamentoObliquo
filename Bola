@@ -1,0 +1,46 @@
+class Ball {
+
+  float ballX1;
+  float ballY2;
+
+  float ballR;
+
+  float ballG = 0.15;
+
+  float ballVx = 8;
+  float ballVy = 8;
+
+  boolean instanced = false;
+
+  Ball (float x, float y, float r) {
+    ballX1 = x;
+    ballY2 = y;
+    ballR = r;
+  }
+
+  void design() {
+    if (instanced) {
+      ellipse(ballX1, ballY2, ballR*2, ballR*2);
+    }
+  }
+
+  void moveBall() {
+    if (instanced) {
+
+      if (ballY2 < 400) {
+        ballX1 += ballVx;
+        ballY2 += ballVy;
+        ballVy += ballG;
+      }
+      println("Vx: ", ballVx, "Vy: ", ballVy);
+    }
+  }
+
+  void intanceBall(Arco a) {
+    if (!instanced) {
+      ballVx = ballVx * a.cos;
+      ballVy = ballVy * a.sen;
+      instanced = true;
+    }
+  }
+}
